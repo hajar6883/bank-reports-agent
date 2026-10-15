@@ -1,0 +1,6 @@
+# Bank code (filename prefix) -> full name. The code is what the agent filters on.
+# File naming: data/raw/<code>_<year>_urd.pdf, e.g. data/raw/bnp_2025_urd.pdf
+BNP: BNP Paribas
+SG: Société Générale
+CASA: Crédit Agricole S.A.
+BPCE: Groupe BPCE

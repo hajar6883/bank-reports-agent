@@ -1,0 +1,208 @@
+# Gold evaluation set. Fill `answer` and `sources` from the PDFs, by hand.
+#  - answer: the reference answer with exact figures, units and dates, as the report states them.
+#  - sources: every page that holds a needed figure. `page` = PDF page index shown by your PDF viewer
+#    (page 1 = first page of the file), NOT the number printed at the bottom of the page.
+#  - type: single (one bank, one fact) | multi (several banks) | table (figure lives in a table).
+#  Questions with an empty answer are skipped by `bra eval`, so you can fill them progressively.
+#  Edit the wording if a bank reports a metric under another name; drop a question if the report lacks it.
+questions:
+  - id: q01
+    type: single
+    question: "What was BNP Paribas' net income attributable to equity holders for fiscal year 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: BNP, year: 2025, page: 0}]
+  - id: q02
+    type: single
+    question: "What was BNP Paribas' fully loaded CET1 ratio at 31 December 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: BNP, year: 2025, page: 0}]
+  - id: q03
+    type: single
+    question: "What was BNP Paribas' cost of risk in 2025, in euros and in basis points of outstanding loans?"
+    answer: ""
+    sources: []  # e.g. [{bank: BNP, year: 2025, page: 0}]
+  - id: q04
+    type: single
+    question: "What dividend per share did BNP Paribas propose for 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: BNP, year: 2025, page: 0}]
+  - id: q05
+    type: single
+    question: "What was BNP Paribas' liquidity coverage ratio (LCR) at end-2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: BNP, year: 2025, page: 0}]
+  - id: q06
+    type: single
+    question: "What was Société Générale's Group net income for 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: SG, year: 2025, page: 0}]
+  - id: q07
+    type: single
+    question: "What was Société Générale's CET1 ratio at end-2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: SG, year: 2025, page: 0}]
+  - id: q08
+    type: single
+    question: "What was Société Générale's cost-to-income ratio in 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: SG, year: 2025, page: 0}]
+  - id: q09
+    type: single
+    question: "What was Société Générale's return on tangible equity (ROTE) in 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: SG, year: 2025, page: 0}]
+  - id: q10
+    type: single
+    question: "How many employees did Société Générale have at the end of 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: SG, year: 2025, page: 0}]
+  - id: q11
+    type: single
+    question: "What was Crédit Agricole S.A.'s net income Group share in 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: CASA, year: 2025, page: 0}]
+  - id: q12
+    type: single
+    question: "What was Crédit Agricole S.A.'s phased-in CET1 ratio at 31 December 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: CASA, year: 2025, page: 0}]
+  - id: q13
+    type: single
+    question: "What were Crédit Agricole S.A.'s revenues in 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: CASA, year: 2025, page: 0}]
+  - id: q14
+    type: single
+    question: "What was Crédit Agricole S.A.'s leverage ratio at end-2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: CASA, year: 2025, page: 0}]
+  - id: q15
+    type: single
+    question: "What dividend per share did Crédit Agricole S.A. propose for 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: CASA, year: 2025, page: 0}]
+  - id: q16
+    type: single
+    question: "What was Groupe BPCE's net income attributable to equity holders in 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: BPCE, year: 2025, page: 0}]
+  - id: q17
+    type: single
+    question: "What was Groupe BPCE's CET1 ratio at end-2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: BPCE, year: 2025, page: 0}]
+  - id: q18
+    type: single
+    question: "What was Groupe BPCE's cost of risk in 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: BPCE, year: 2025, page: 0}]
+  - id: q19
+    type: single
+    question: "What were Groupe BPCE's net banking income (revenues) in 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: BPCE, year: 2025, page: 0}]
+  - id: q20
+    type: single
+    question: "What was Groupe BPCE's leverage ratio at end-2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: BPCE, year: 2025, page: 0}]
+  - id: q21
+    type: multi
+    question: "Compare the CET1 ratios of BNP Paribas and Société Générale at end-2025."
+    answer: ""
+    sources: []  # one entry per bank
+  - id: q22
+    type: multi
+    question: "Which of BNP Paribas, Société Générale, Crédit Agricole S.A. and Groupe BPCE had the highest CET1 ratio at end-2025?"
+    answer: ""
+    sources: []  # one entry per bank
+  - id: q23
+    type: multi
+    question: "Compare the 2025 net income of BNP Paribas and Crédit Agricole S.A."
+    answer: ""
+    sources: []  # one entry per bank
+  - id: q24
+    type: multi
+    question: "Compare the cost of risk of Société Générale and Groupe BPCE in 2025."
+    answer: ""
+    sources: []  # one entry per bank
+  - id: q25
+    type: multi
+    question: "Rank the four banks by 2025 revenues."
+    answer: ""
+    sources: []  # one entry per bank
+  - id: q26
+    type: multi
+    question: "Compare the leverage ratios of Crédit Agricole S.A. and BNP Paribas at end-2025."
+    answer: ""
+    sources: []  # one entry per bank
+  - id: q27
+    type: multi
+    question: "Which bank had the lower cost-to-income ratio in 2025: BNP Paribas or Société Générale?"
+    answer: ""
+    sources: []  # one entry per bank
+  - id: q28
+    type: multi
+    question: "Compare the dividends per share proposed for 2025 by BNP Paribas, Société Générale and Crédit Agricole S.A."
+    answer: ""
+    sources: []  # one entry per bank
+  - id: q29
+    type: multi
+    question: "Compare the liquidity coverage ratios of Société Générale and Groupe BPCE at end-2025."
+    answer: ""
+    sources: []  # one entry per bank
+  - id: q30
+    type: multi
+    question: "Did BNP Paribas and Société Générale both increase their net income in 2025 versus 2024? Give both changes."
+    answer: ""
+    sources: []  # one entry per bank
+  - id: q31
+    type: multi
+    question: "Compare the number of employees at BNP Paribas and Crédit Agricole S.A. at end-2025."
+    answer: ""
+    sources: []  # one entry per bank
+  - id: q32
+    type: multi
+    question: "Compare the return on tangible equity of BNP Paribas and Société Générale in 2025."
+    answer: ""
+    sources: []  # one entry per bank
+  - id: q33
+    type: table
+    question: "What were the 2025 revenues of BNP Paribas' Corporate & Institutional Banking (CIB) division?"
+    answer: ""
+    sources: []  # e.g. [{bank: BNP, year: 2025, page: 0}]
+  - id: q34
+    type: table
+    question: "What was the cost of risk of BNP Paribas' Commercial, Personal Banking & Services division in 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: BNP, year: 2025, page: 0}]
+  - id: q35
+    type: table
+    question: "What was the net income of Société Générale's French Retail, Private Banking and Insurance business in 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: SG, year: 2025, page: 0}]
+  - id: q36
+    type: table
+    question: "What were the 2025 revenues of Société Générale's Global Banking and Investor Solutions?"
+    answer: ""
+    sources: []  # e.g. [{bank: SG, year: 2025, page: 0}]
+  - id: q37
+    type: table
+    question: "What was the net income Group share of Crédit Agricole S.A.'s Asset Gathering division in 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: CASA, year: 2025, page: 0}]
+  - id: q38
+    type: table
+    question: "What were Crédit Agricole S.A.'s risk-weighted assets at end-2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: CASA, year: 2025, page: 0}]
+  - id: q39
+    type: table
+    question: "What was the net income of Groupe BPCE's Retail Banking & Insurance division in 2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: BPCE, year: 2025, page: 0}]
+  - id: q40
+    type: table
+    question: "What were Groupe BPCE's risk-weighted assets at end-2025?"
+    answer: ""
+    sources: []  # e.g. [{bank: BPCE, year: 2025, page: 0}]

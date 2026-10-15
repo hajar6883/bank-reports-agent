@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bank-reports-agent"
+version = "0.1.0"
+description = "Agentic RAG over bank annual reports: hybrid search on pgvector, an MCP server, a LangGraph agent and an evaluation harness."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "langgraph>=1.0",
+  "langchain>=1.0",
+  "langchain-core>=1.0",
+  "langchain-mcp-adapters>=0.3",
+  "mcp>=1.20",
+  "psycopg[binary]>=3.2",
+  "pgvector>=0.4",
+  "pymupdf>=1.26",
+  "numpy>=1.26",
+  "pydantic>=2.7",
+  "pydantic-settings>=2.4",
+  "python-dotenv>=1.0",
+  "pyyaml>=6",
+  "fastapi>=0.115",
+  "uvicorn>=0.30",
+]
+
+[project.optional-dependencies]
+# Pick the provider(s) you have a key for.
+openai = ["langchain-openai>=0.3"]
+anthropic = ["langchain-anthropic>=0.3"]
+mistral = ["langchain-mistralai>=0.2"]
+# Free local embeddings (downloads ~1 GB of model weights on first run).
+local = ["sentence-transformers>=3.0"]
+# Optional tracing with Arize Phoenix.
+tracing = ["arize-phoenix-otel>=0.9", "openinference-instrumentation-langchain>=0.1"]
+dev = ["pytest>=8", "pytest-asyncio>=0.24", "httpx>=0.27"]
+
+[project.scripts]
+bra = "bra.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+markers = ["db: needs a Postgres+pgvector database (DATABASE_URL)"]

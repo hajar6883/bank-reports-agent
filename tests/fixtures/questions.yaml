@@ -1,0 +1,32 @@
+# Gold set for the synthetic corpus (fictional banks ALPHA and BETA).
+questions:
+  - id: f01
+    type: single
+    question: "What was the CET1 ratio of Beta Bank at end 2025?"
+    answer: "13.4% at end-December 2025."
+    sources: [{bank: BETA, year: 2025, page: 3}]
+  - id: f02
+    type: single
+    question: "What was Banque Alpha's net income attributable to the Group in 2025?"
+    answer: "EUR 9.4 billion."
+    sources: [{bank: ALPHA, year: 2025, page: 2}]
+  - id: f03
+    type: multi
+    question: "Compare the CET1 ratio of Banque Alpha and Beta Bank in 2025."
+    answer: "Banque Alpha 12.9%, Beta Bank 13.4%: Beta Bank is higher."
+    sources: [{bank: ALPHA, year: 2025, page: 3}, {bank: BETA, year: 2025, page: 3}]
+  - id: f04
+    type: table
+    question: "What was the 2025 cost of risk of Banque Alpha's corporate banking business?"
+    answer: "EUR 640 million."
+    sources: [{bank: ALPHA, year: 2025, page: 5}]
+  - id: f05
+    type: single
+    question: "How many people did Beta Bank employ at the end of 2025?"
+    answer: "117,000 people."
+    sources: [{bank: BETA, year: 2025, page: 4}]
+  - id: f06
+    type: multi
+    question: "Compare the 2025 net income of Banque Alpha and Beta Bank."
+    answer: "Banque Alpha EUR 9.4 billion, Beta Bank EUR 4.1 billion."
+    sources: [{bank: ALPHA, year: 2025, page: 2}, {bank: BETA, year: 2025, page: 2}]
