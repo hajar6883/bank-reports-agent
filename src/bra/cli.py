@@ -104,6 +104,8 @@ def main(argv: list[str] | None = None) -> None:
     args = p.parse_args(argv)
 
     logging.basicConfig(level=logging.INFO, format="%(message)s")
+    for noisy in ("httpx", "huggingface_hub", "sentence_transformers", "urllib3"):
+        logging.getLogger(noisy).setLevel(logging.WARNING)
     settings = get_settings()
     _tracing(settings)
 

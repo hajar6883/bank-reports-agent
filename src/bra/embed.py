@@ -54,7 +54,8 @@ class LocalEmbedder:
 
         self.name = f"local:{model}"
         self.model = SentenceTransformer(model)
-        self.dim = self.model.get_sentence_embedding_dimension()
+        get_dim = getattr(self.model, "get_embedding_dimension", None) or self.model.get_sentence_embedding_dimension
+        self.dim = get_dim()
         self.e5 = "e5" in model.lower()
 
     def embed_documents(self, texts: list[str]) -> np.ndarray:
