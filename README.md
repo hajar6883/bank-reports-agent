@@ -1,5 +1,7 @@
 # bank-reports-agent
 
+[![ci](https://github.com/hajar6883/bank-reports-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/hajar6883/bank-reports-agent/actions/workflows/ci.yml)
+
 Ask questions across the annual reports (universal registration documents) of French banks, with answers that cite the page they come from.
 
 The project compares two ways of doing that on a hand-labelled question set:
@@ -8,18 +10,6 @@ The project compares two ways of doing that on a hand-labelled question set:
 - **Agent:** a LangGraph state machine that plans sub-queries (one per bank and metric), retrieves through an **MCP server**, answers, then has a verifier check that every figure is supported, and searches again if it isn't.
 
 The question it answers: *how much accuracy does the agent buy on multi-bank and table questions, and at what cost in tokens and latency?*
-
-## Results
-
-> Fill in after the first full run: paste `results/<run>/report.md` here and keep the run folder.
-
-| mode | single | multi | table | tokens / question | latency |
-|---|---|---|---|---|---|
-| RAG baseline | | | | | |
-| Agent (no verifier) | | | | | |
-| Agent | | | | | |
-
-*judge-correct accuracy on N hand-labelled questions over 4 reports, LLM `…`, judge `…`.*
 
 ## Architecture
 
