@@ -7,3 +7,4 @@ results/
 .pytest_cache/
 .DS_Store
 graphify-out/
+docs/DESIGN.md
