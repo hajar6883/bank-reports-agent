@@ -1,6 +1,4 @@
-"""PDF -> page-aware chunks.
-
-Design choices (worth explaining in an interview):
+"""PDF -> page-aware chunks
 - Chunks never cross a page boundary, so every citation points at one page.
 - Tables are extracted separately as markdown and stored as their own chunks
   (kind="table"), because flattened table text is where annual-report RAG fails.
@@ -40,8 +38,8 @@ def sha256(path: Path) -> str:
 
 
 def _clean(text: str) -> str:
-    text = text.replace("­", "")  # soft hyphens
-    text = re.sub(r"-\n(?=[a-z])", "", text)  # de-hyphenate line breaks
+    text = text.replace("­", "")  
+    text = re.sub(r"-\n(?=[a-z])", "", text)  
     text = re.sub(r"[ \t]+", " ", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()

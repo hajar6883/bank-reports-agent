@@ -1,10 +1,6 @@
-"""Postgres + pgvector store with hybrid (BM25-style + dense) retrieval.
+"""Postgres + pgvector store with hybrid (lexical + dense) retrieval.
 
-One database does both sides of hybrid search:
-- lexical: Postgres full-text search (tsvector + ts_rank_cd), OR-ed query terms
-- dense:   pgvector cosine distance on an HNSW index
-The two ranked lists are merged with Reciprocal Rank Fusion (RRF), which needs
-no score calibration between the two retrievers.
+
 """
 from __future__ import annotations
 
@@ -158,17 +154,17 @@ class Store:
         rows = c.execute(
             f"SELECT id FROM chunks WHERE true{where} ORDER BY embedding <=> %s LIMIT %s", (*params, q, n)
         ).fetchall()
-        return [r[0] for r in rows]
+        return [r[0] for r in rows]#[(812,), (4051,), ...] becomes  [812, 4051, ...]
 
     def _lexical_ids(self, c, query: str, n: int, bank, year) -> list[int]:
         where, params = self._filters(bank, year)
         # plainto_tsquery ANDs every term, which is too strict for questions; OR them instead.
-        tsq = f"to_tsquery('{self.fts}', replace(plainto_tsquery('{self.fts}', %s)::text, '&', '|'))"
+        tsq = f"to_tsquery('{self.fts}', replace(plainto_tsquery('{self.fts}', %s)::text, '&', '|'))" #piece of sql text with a a hole to plug query arg
         rows = c.execute(
             f"SELECT id FROM chunks WHERE tsv @@ {tsq}{where} ORDER BY ts_rank_cd(tsv, {tsq}) DESC LIMIT %s",
             (query, *params, query, n),
         ).fetchall()
-        return [r[0] for r in rows]
+        return [r[0] for r in rows] 
 
     def search(self, query: str, k: int = 8, bank: str | None = None, year: int | None = None,
                mode: str = "hybrid", candidates: int = 50, rrf_k: int = 60) -> list[Hit]:

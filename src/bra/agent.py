@@ -42,7 +42,7 @@ class State(TypedDict, total=False):
     answer: str
     check: Check | None
     attempts: int
-    usage: Annotated[list[Usage], operator.add]
+    usage: Annotated[list[Usage], operator.add] # each step adds its token only (and its log lines go into trace) into the list 
     trace: Annotated[list[str], operator.add]
 
 

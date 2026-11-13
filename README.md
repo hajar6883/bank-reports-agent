@@ -52,7 +52,7 @@ docker compose up -d                         # Postgres + pgvector on :5433
 ```
 
 Put the reports in `data/raw/`, named `<code>_<year>_urd.pdf` with the codes in `data/banks.yaml`
-(`bnp_2025_urd.pdf`, `sg_2025_urd.pdf`, `casa_2025_urd.pdf`, `bpce_2025_urd.pdf`). Download them from each bank's
+(`bnp_2025_urd.pdf`, `sg_2025_urd.pdf`, `bpce_2025_urd.pdf`). Download them from each bank's
 investor-relations page; the reports are not redistributed in this repo.
 
 ```bash
