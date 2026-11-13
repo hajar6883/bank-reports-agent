@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: fct_bank_kpis
+    description: >
+      Group-level KPIs of French banks, extracted from the tables of their annual reports (URD).
+      One row per bank x fiscal year x KPI. Each value carries the pages it was read from.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [bank, fiscal_year, kpi_code]
+    columns:
+      - name: bank
+        data_tests: [not_null]
+      - name: fiscal_year
+        data_tests: [not_null]
+      - name: kpi_code
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('kpi_definitions')
+                field: kpi_code
+      - name: value
+        description: "In the KPI's unit (EUR m or %). Costs are stored as positive amounts."
+        data_tests: [not_null]
+      - name: source_pages
+        description: "PDF pages where the selected value appears: the audit trail back to the report."
+      - name: selection_status
+        description: >
+          unambiguous: one value found. group_scope: the only value read on a consolidated P&L page.
+          majority: several group-level values, the selected one is on the most pages.
+          needs_review: no group-level source, or a tie broken by page order only. Check it before use.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["unambiguous", "group_scope", "majority", "needs_review"]
+      - name: is_out_of_range
+        description: "True when the value is outside the plausible range set in kpi_definitions."

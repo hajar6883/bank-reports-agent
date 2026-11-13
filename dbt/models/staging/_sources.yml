@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: bra
+    description: "Tables written by the Python ingestion (`bra ingest`): one row per report, one row per chunk."
+    schema: public
+    tables:
+      - name: documents
+        description: "One row per ingested annual report (URD) PDF."
+        columns:
+          - name: id
+            data_tests: [unique, not_null]
+      - name: chunks
+        description: "Page-aware text and table chunks. Tables are stored as markdown (kind = 'table')."
+        columns:
+          - name: id
+            data_tests: [unique, not_null]
+          - name: kind
+            data_tests:
+              - accepted_values:
+                  arguments:
+                    values: ["text", "table"]

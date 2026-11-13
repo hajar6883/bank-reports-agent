@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: stg_documents
+    description: "One row per annual report (URD)."
+    columns:
+      - name: document_id
+        data_tests: [unique, not_null]
+      - name: bank
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["BNP", "SG", "BPCE"]
+
+  - name: stg_table_chunks
+    description: "One row per table chunk extracted from a report, as markdown."
+    columns:
+      - name: chunk_id
+        data_tests: [unique, not_null]
+      - name: document_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_documents')
+                field: document_id
+      - name: page
+        description: "PDF page index (1 = first page of the file), the same convention as the gold set."
+        data_tests: [not_null]

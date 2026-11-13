@@ -1,0 +1,11 @@
+kpi_code,kpi_name,statement,unit,is_percent,report_as_positive,label_regex,min_value,max_value
+net_income_group_share,Net income attributable to equity holders,pnl,EUR m,false,false,"^(net income attributable to (the )?equity holders( of the parent)?|group net income( \(in eurm\))?)$",-50000,50000
+net_banking_income,Net banking income (revenues),pnl,EUR m,false,false,"^(net banking income|revenues)$",0,100000
+cost_income_ratio,Cost/income ratio,pnl,%,true,false,"^cost ?(/|-to-) ?income( ratio)?$",20,100
+cost_of_risk,Cost of risk,pnl,EUR m,false,true,"^(net )?cost of risk$",0,20000
+rote,Return on tangible equity,pnl,%,true,false,"^rote( \(%\))?$",-20,40
+cet1_ratio,CET1 ratio,prudential,%,true,false,"^([0-9]+ )?(cet1|common equity tier 1) ratio( \(.*\))?$",5,30
+leverage_ratio,Leverage ratio,prudential,%,true,false,"^([0-9]+ )?leverage ratio( \(%\))?$",2,15
+lcr,Liquidity coverage ratio (year-end spot),prudential,%,true,false,"^(lcr|liquidity coverage ratio)( \(%\))?$",100,300
+lcr_avg_12m,Liquidity coverage ratio (12-month average; Pillar 3 KM1),prudential,%,true,false,"^[0-9]+ liquidity coverage ratio( \(%\))?$",100,300
+rwa,Risk-weighted assets,prudential,EUR m,false,false,"^(([0-9]+ )?(total )?risk-weighted assets( \(« floored »\)| \(rwas\))?|[0-9]+ total risk exposure amount)$",50000,2000000

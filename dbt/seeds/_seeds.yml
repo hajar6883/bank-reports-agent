@@ -1,0 +1,37 @@
+version: 2
+
+seeds:
+  - name: kpi_definitions
+    description: >
+      The KPI dictionary: one row per KPI with its unit, sign convention, the row-label pattern used to find it
+      in report tables, and a plausible range. Changing a calculation rule means changing this file, in review.
+    config:
+      column_types:
+        is_percent: boolean
+        report_as_positive: boolean
+        min_value: numeric
+        max_value: numeric
+    columns:
+      - name: kpi_code
+        data_tests: [unique, not_null]
+      - name: statement
+        description: "pnl: read from the consolidated income statement. prudential: capital and liquidity (Pillar 3)."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["pnl", "prudential"]
+      - name: label_regex
+        description: "Postgres regex matched against the lower-cased, whitespace-normalised row label."
+      - name: report_as_positive
+        description: "Reports print some costs in parentheses, e.g. cost of risk (3,350). Store them as positive amounts."
+
+  - name: gold_kpis
+    description: "Reference values hand-labelled from the PDFs (data/questions.yaml). Used to reconcile the mart."
+    config:
+      column_types:
+        expected_value: numeric
+        tolerance: numeric
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [bank, fiscal_year, kpi_code]

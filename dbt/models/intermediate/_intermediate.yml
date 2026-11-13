@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: int_table_cells
+    description: "Markdown tables exploded into non-empty value cells. Grain: chunk x row x value column."
+    columns:
+      - name: value_position
+        description: "Rank among the row's non-empty value cells. 1 = the reporting year in URD tables."
+      - name: n_amount_tokens
+        description: "Amounts in the cell. More than 2 means the PDF extractor merged a series (e.g. quarters) into one cell."
+      - name: n_percent_tokens
+        description: "Percentages in the cell, same idea for ratio rows."
+      - name: value
+        description: "First numeric token of the cell. Parentheses or a minus sign mean negative."
+
+  - name: int_kpi_candidates
+    description: "Every cell that matches a KPI label. Grain: bank x fiscal_year x kpi_code x page x row."
+    columns:
+      - name: kpi_code
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('kpi_definitions')
+                field: kpi_code
+      - name: is_group_pnl_page
+        description: "The page also shows net income attributable to equity holders, so it is a consolidated P&L page."

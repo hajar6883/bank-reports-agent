@@ -1,0 +1,13 @@
+# Local Postgres from docker-compose.yml. dbt reads this file because we run it from the dbt/ folder.
+bank_kpis:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      port: 5433
+      user: bra
+      password: "{{ env_var('BRA_PG_PASSWORD', 'bra') }}"
+      dbname: bra
+      schema: analytics
+      threads: 4
